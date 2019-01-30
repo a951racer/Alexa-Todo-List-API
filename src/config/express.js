@@ -10,6 +10,11 @@ module.exports = function() {
     dotenv.config();
     const app = express();
 
+    app.use((req, res, next) => {
+        console.log(req);
+        next();
+    });
+
     app.use(cors());
     if (process.env.NODE_ENV !== 'production')
         app.use(morgan('dev'));
